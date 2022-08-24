@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>arcaea饭制视频封面生成器</title>
+</head>
+<body>
+<canvas id="cover" width="1920" height="1080"></canvas>
+<br>
+<div>
+    分辨率：
+    <button id="bili-size" onclick="resizeCanvas(true)">哔哩哔哩</button>
+    <button id="other-size" onclick="resizeCanvas(false)">其他</button>
+</div>
+<br>
+<label for="background-file">背景图片：</label><input disabled="disabled" id="background-file" type="file" accept=".jpg, .png, .jpeg, .webm, .bmp">
+<strong id="background-message"></strong>
+<br>
+<label for="cover-file">曲绘：</label><input disabled="disabled" id="cover-file" type="file" accept=".jpg, .png, .jpeg, .webm, .bmp">
+<strong id="cover-message"></strong>
+<br>
+<br>
+<label for="song-title">歌名：</label><input id="song-title" type="text" value="「±0」">
+<label for="song-artist">作者：</label><input id="song-artist" type="text" value="ぺぽよ">
+<br>
+<label for="song-diff">难度：</label><select id="song-diff">
+    <option>Past</option>
+    <option>Present</option>
+    <option selected="selected">Future</option>
+    <option>Beyond</option>
+</select><input id="song-rating" type="number" step="1" value="7">
+<br>
+<label for="main-color">主色调：</label><input type="color" id="main-color"><input id="main-alpha" type="number" value="0.5">
+<br>
+<div>
+    色调偏移：
+
+</div>
+<br>
+<br>
+<label for="shadow-color">封面阴影颜色：</label><input id="shadow-color" type="color"><br>
+<br>
+<label for="use-blur">启用背景模糊:</label><input id="use-blur" type="checkbox" checked="checked"><br>
+<label for="blur-color">背景模糊颜色：</label><input id="blur-color" type="color"><br>
+<label for="blur-alpha">模糊透明度(0~1)：</label><input id="blur-alpha" type="number" value="0.2"><br>
+<label for="blur-range">模糊程度(0~20)：</label><input id="blur-range" type="number" step="0.1" value="14.3"><br>
+<br>
+<br>
+<button id="start">开始</button>
+<button id="download">下载</button>
+</body>
+<script src="stackblur.js"></script>
+<script src="script.js"></script>
+</html>
