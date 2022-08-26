@@ -2,7 +2,7 @@ const canvas = document.getElementById("cover");
 const ctx = canvas.getContext("2d");
 const start = document.getElementById("start");
 const backgroundFile = document.getElementById("background-file");
-const coverFile = document.getElementById("cover-file");
+const coverFileInput = document.getElementById("cover-file");
 const mainColorInput = document.getElementById("main-color");
 const mainAlphaInput = document.getElementById("main-alpha");
 const useBlurInput = document.getElementById("use-blur");
@@ -28,7 +28,7 @@ let coverUrl = "";
 
 window.addEventListener("load", function() {
     backgroundFile.disabled = false;
-    coverFile.disabled = false;
+    coverFileInput.disabled = false;
 });
 mainAlphaInput.addEventListener("change", function() {
     if (this.value > 1) {
@@ -53,7 +53,7 @@ blurRangeInput.addEventListener("change", function() {
     }
 });
 backgroundFile.addEventListener("change", readBackground)
-coverFile.addEventListener("change", readCover);
+coverFileInput.addEventListener("change", readCover);
 start.addEventListener("click", draw);
 downloadButton.addEventListener("click", download);
 
@@ -349,8 +349,8 @@ function readBackground() {
 
 function readCover() {
     let fileReader = new FileReader();
-    if (coverFile.files.length < 1) return;
-    let file = coverFile.files[0];
+    if (coverFileInput.files.length < 1) return;
+    let file = coverFileInput.files[0];
     fileReader.readAsDataURL(file);
     if (fileReader.error) {
         setError('错误：无法读取文件', "cover-message");
@@ -363,7 +363,7 @@ function readCover() {
     fileReader.onloadend = function readEnd() {
         setLog("读取完毕！", "cover-message");
         coverUrl = fileReader.result.substring(0);
-        coverFile.disabled = true;
+        coverFileInput.disabled = true;
     };
 }
 
